@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Analytics Assistant</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="logo">📊</span>
+        <h1>Analytics Assistant</h1>
+      </div>
+
+      <section class="sidebar-section">
+        <h2>Loaded Datasets</h2>
+        <ul id="table-list" class="table-list">
+          <li class="empty">Loading...</li>
+        </ul>
+      </section>
+
+      <section class="sidebar-section">
+        <h2>Upload Dataset</h2>
+        <label class="upload-area" id="upload-area">
+          <input type="file" id="file-input" accept=".csv,.xlsx,.parquet" hidden />
+          <span id="upload-label">Drop a CSV, Excel, or Parquet file<br /><small>or click to browse</small></span>
+        </label>
+        <div id="upload-status" class="upload-status"></div>
+      </section>
+
+      <section class="sidebar-section">
+        <button id="reset-btn" class="reset-btn">↺ Reset Session</button>
+      </section>
+    </aside>
+
+    <!-- Main chat area -->
+    <main class="chat-area">
+      <div id="messages" class="messages">
+        <div class="message assistant">
+          <div class="bubble">
+            Hi! I'm your data analytics assistant. The <strong>Sleep Health dataset</strong> is already loaded — ask me anything about it, or upload your own file.
+            <br /><br />
+            Try: <em>"Give me an overview of the dataset"</em> or <em>"Which occupation has the highest average sleep quality?"</em>
+          </div>
+        </div>
+      </div>
+
+      <form id="chat-form" class="chat-form">
+        <textarea
+          id="question-input"
+          placeholder="Ask a question about your data..."
+          rows="1"
+          autocomplete="off"
+        ></textarea>
+        <button type="submit" id="send-btn" aria-label="Send">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+    </main>
+
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
