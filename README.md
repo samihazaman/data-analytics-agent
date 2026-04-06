@@ -22,7 +22,7 @@ Built as part of the Open Avenues Build Fellowship: AI-Powered Data Exploration 
 ## Project Structure
 
 ```
-data-analytics-assistant/
+data-analytics-agent/
 ├── notebooks/
 │   └── sleep_health_assistant.ipynb    # Main demo notebook
 ├── src/
