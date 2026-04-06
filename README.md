@@ -77,7 +77,7 @@ uv sync
 
 ### Step 3 — Configure your API key
 
-Create a `.env` file in the `data-analytics-assistant/` folder:
+Create a `.env` file in the `data-analytics-agent/` folder:
 
 ```bash
 # .env
