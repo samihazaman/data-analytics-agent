@@ -30,6 +30,12 @@ data-analytics-assistant/
 │   ├── tools.py                        # 14 analytics tools (filter, group, charts, load, etc.)
 │   ├── memory.py                       # Sliding-window conversation memory + summarization
 │   └── __init__.py
+├── web/
+│   ├── server.py                       # FastAPI backend — chat, file upload, session reset
+│   └── static/
+│       ├── index.html                  # Chat UI
+│       ├── app.js                      # Frontend logic
+│       └── style.css                   # Styles
 ├── data/
 │   └── sleep_health_dataset.csv        # Sleep health and lifestyle dataset (100k records)
 ├── pyproject.toml                      # Project dependencies
@@ -84,17 +90,30 @@ OPENAI_API_KEY=sk-your-key-here
 jupyter lab
 ```
 
-Then open either notebook from the `notebooks/` folder.
+Then open the notebook from the `notebooks/` folder.
 
 ---
 
 ## How to Run the Agent
 
-### Option 1 — Run the pre-executed demo notebook
+### Option 1 — Web UI 
 
-Open `notebooks/sleep_health_assistant.ipynb` — all cells are already run with outputs visible. You can read through the full demo without needing an API key.
+Start the FastAPI server from the project root:
 
-### Option 2 — Run interactively
+```bash
+uvicorn web.server:app --reload --port 8000
+```
+
+Then open **http://127.0.0.1:8000** in your browser.
+
+The Sleep Health dataset loads automatically. From there you can:
+- Type questions in the chat input and hit Enter (or click Send)
+- Upload your own CSV, Excel, or Parquet file using the sidebar
+- Reset the session (clears memory and uploaded datasets) with the Reset button
+
+> Make sure you run the command from the project root, not inside the `web/` folder.
+
+### Option 2 — Run interactively via notebook
 
 Open `notebooks/sleep_health_assistant.ipynb` and run all cells from top to bottom:
 
@@ -202,6 +221,10 @@ See `requirements.txt` for the full list. Key libraries:
 | `matplotlib` | >=3.8 | Chart generation |
 | `pydantic` | >=2.0 | Structured LLM output models |
 | `python-dotenv` | >=1.0 | Loading API key from `.env` |
+| `fastapi` | >=0.110 | Web UI backend |
+| `uvicorn` | >=0.29 | ASGI server for FastAPI |
+| `python-multipart` | >=0.0.9 | File upload support |
+| `openpyxl` | >=3.1 | Excel file support |
 | `jupyter` | >=1.0 | Notebook interface |
 | `ipykernel` | >=6.0 | Jupyter kernel |
 
